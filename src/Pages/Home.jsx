@@ -1,4 +1,3 @@
-import SearchBar from "./Components/SearchBar";
 import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 import "./Components/styles/HomeStyles.css";
@@ -12,6 +11,7 @@ const Home = () => {
     const [selectedGenres, setSelectedGenres] = useState([]);
     const [currMovies, setCurrMovies] = useState([{}]);
 
+
     useEffect(() => {
         setCurrMovies([]);
         setSelectedGenres([]);
@@ -19,7 +19,9 @@ const Home = () => {
         setList([]);
         //getting the list of all movies from our flask server for our searchbar
         fetch("/api/movies").then((Response) =>
-            Response.json().then((data) => setList(data.arr))
+            Response.json().then((data) => {setList(data.arr);
+            })
+         
         );
         // getting the list of all genres
         fetch(`https://api.themoviedb.org/3/genre/movie/list?${apiKey}`).then(
@@ -77,7 +79,7 @@ const Home = () => {
                 <NavBar isHome={false} />
                 <div className="HomeSearch">
                     {/*Rendering the searchbar */}
-                    <SearchBar movies={list} placeholder="Search for a Movie" />
+     
                 </div>
 
                 <h2 className="genreHeader">Get Top Movies Based On Genre </h2>

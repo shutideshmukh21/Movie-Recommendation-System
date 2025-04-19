@@ -26,7 +26,7 @@ const MovieCard = ({ movie }) => {
             {movie.vote_average ? (
                 <span className={"movie-voting"}>
                     {movie.vote_average}
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i className="fa fa-star" aria-hidden="true"></i>
                 </span>
             ) : null}
         </div>
